@@ -17,6 +17,11 @@ class TasksController < ApplicationController
   # GET /tasks/new.json
   def new
     @task = Task.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.js # new.js.erb
+    end
   end
 
   # GET /tasks/1/edit
@@ -31,7 +36,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to :tasks, notice: 'Task was successfully created.' }
-      format.json { render json: @task, status: :created, location: @task }
+      format.js # create.js.erb
     end
   end
 

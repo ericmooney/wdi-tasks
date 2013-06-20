@@ -5,23 +5,13 @@
 <h2>Incomplete Tasks</h2>
 <div class="tasks" id="incomplete_tasks">
   <% @incomplete_tasks.each do |incomplete_task| %>
-    <%= form_for incomplete_task do |f| %>
-      <%= f.check_box :completed %>
-      <%= f.submit "Update" %>
-      <%= f.label :completed, incomplete_task.title %>
-      <%= link_to "(remove)", incomplete_task, :method => :delete, :data => {:confirm => "Are you sure?"} %>
-    <% end %>
+    <%= render :partial => "task", :locals => {:task => incomplete_task} %>
   <% end %>
 </div>
 
 <h2>Complete Tasks</h2>
 <div class="tasks" id="complete_tasks">
   <% @complete_tasks.each do |complete_task| %>
-    <%= form_for complete_task do |f| %>
-      <%= f.check_box :completed %>
-      <%= f.submit "Update" %>
-      <%= f.label :completed, complete_task.title %>
-      <%= link_to "(remove)", complete_task, :method => :delete, :data => {:confirm => "Are you sure?"} %>
-    <% end %>
+    <%= render :partial => "task", :locals => {:task => complete_task} %>
   <% end %>
 </div>
