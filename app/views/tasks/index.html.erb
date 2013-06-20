@@ -1,6 +1,6 @@
 <h1>My Tasks</h1>
 
-<%= link_to "New Task", new_task_path, id: "new_task_link" %>
+<%= link_to "New Task", new_task_path, :id => "new_task_link", :remote => true %>
 
 <h2>Incomplete Tasks</h2>
 <div class="tasks" id="incomplete_tasks">
@@ -9,7 +9,7 @@
       <%= f.check_box :completed %>
       <%= f.submit "Update" %>
       <%= f.label :completed, incomplete_task.title %>
-      <%= link_to "(remove)", incomplete_task, method: :delete, data: {confirm: "Are you sure?"} %>
+      <%= link_to "(remove)", incomplete_task, :method => :delete, :data => {:confirm => "Are you sure?"} %>
     <% end %>
   <% end %>
 </div>
@@ -21,7 +21,7 @@
       <%= f.check_box :completed %>
       <%= f.submit "Update" %>
       <%= f.label :completed, complete_task.title %>
-      <%= link_to "(remove)", complete_task, method: :delete, data: {confirm: "Are you sure?"} %>
+      <%= link_to "(remove)", complete_task, :method => :delete, :data => {:confirm => "Are you sure?"} %>
     <% end %>
   <% end %>
 </div>
