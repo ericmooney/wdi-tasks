@@ -1,25 +1,27 @@
-<h1>Listing tasks</h1>
+<h1>My Tasks</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Completed</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= link_to "New Task", new_task_path, id: "new_task_link" %>
 
-<% @tasks.each do |task| %>
-  <tr>
-    <td><%= task.title %></td>
-    <td><%= task.completed %></td>
-    <td><%= link_to 'Show', task %></td>
-    <td><%= link_to 'Edit', edit_task_path(task) %></td>
-    <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<h2>Incomplete Tasks</h2>
+<div class="tasks" id="incomplete_tasks">
+  <% @incomplete_tasks.each do |incomplete_task| %>
+    <%= form_for incomplete_task do |f| %>
+      <%= f.check_box :completed %>
+      <%= f.submit "Update" %>
+      <%= f.label :completed, incomplete_task.title %>
+      <%= link_to "(remove)", incomplete_task, method: :delete, data: {confirm: "Are you sure?"} %>
+    <% end %>
+  <% end %>
+</div>
 
-<br />
-
-<%= link_to 'New Task', new_task_path %>
+<h2>Complete Tasks</h2>
+<div class="tasks" id="complete_tasks">
+  <% @complete_tasks.each do |complete_task| %>
+    <%= form_for complete_task do |f| %>
+      <%= f.check_box :completed %>
+      <%= f.submit "Update" %>
+      <%= f.label :completed, complete_task.title %>
+      <%= link_to "(remove)", complete_task, method: :delete, data: {confirm: "Are you sure?"} %>
+    <% end %>
+  <% end %>
+</div>
