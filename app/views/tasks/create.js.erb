@@ -1,1 +1,4 @@
 $("#incomplete_tasks").append('<%= j render :partial => "task", :locals => {:task => @task} %>');
+
+$("#new_task_link").show(); // Shows the New Task Link again.
+$("#new_task").remove(); // Removes the New Task form I just submitted.
