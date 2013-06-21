@@ -48,10 +48,10 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update_attributes(params[:task])
         format.html { redirect_to :tasks, notice: 'Task was successfully updated.' }
-        format.json { head :no_content }
+        format.js # update.js.erb
       else
         format.html { render action: "edit" }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
